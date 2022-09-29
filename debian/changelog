@@ -1,0 +1,84 @@
+golang-github-hashicorp-go-retryablehttp (0.7.0-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream version.
+  * Update d/control
+    - Add "Rules-Requires-Root: no".
+    - Bump debhelper compatibility level to 13.
+    - Bump Standards-Version to 4.5.1 (no change).
+  * Update d/watch to v4.
+  * Update d/rules.
+    - Use override_dh_auto_test. Ignore test failures with sbuild.
+
+ -- Nobuhiro Iwamatsu <iwamatsu@debian.org>  Sun, 26 Sep 2021 07:29:57 +0900
+
+golang-github-hashicorp-go-retryablehttp (0.6.4-2) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Wrap long lines in changelog entries: 0.0+git20180718.e651d75-1, 0.0~git20160810.0.f4ed9b0-2.
+  * Set debhelper-compat version in Build-Depends.
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository, Repository-Browse.
+
+ -- Jelmer Vernooĳ <jelmer@debian.org>  Fri, 05 Feb 2021 02:21:50 +0000
+
+golang-github-hashicorp-go-retryablehttp (0.6.4-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Standards-Version: 4.4.1
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Sat, 30 Nov 2019 08:54:39 +1100
+
+golang-github-hashicorp-go-retryablehttp (0.6.3-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Tightened dependencies.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Sat, 16 Nov 2019 12:47:58 +1100
+
+golang-github-hashicorp-go-retryablehttp (0.6.2-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Standards-Version: 4.4.0.
+  * DH & compat to version 12.
+  * watch file to monitor tagged releases.
+  * (Build-)Depends += "golang-github-hashicorp-go-hclog-dev".
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Thu, 26 Sep 2019 00:14:12 +1000
+
+golang-github-hashicorp-go-retryablehttp (0.0+git20180718.e651d75-1) unstable; urgency=medium
+
+  [ Alexandre Viau ]
+  * Point Vcs-* urls to salsa.debian.org.
+
+  [ Konstantinos Margaritis ]
+  * Replace golang-go with golang-any in Build-Depends, remove golang-go from
+    Depends
+
+  [ Dmitry Smirnov ]
+  * New upstream snapshot
+  * Testsuite: autopkgtest-pkg-go
+  * Standards-Version: 4.2.1; Priority: optional
+  * debhelper & compat to version 11
+  * Added "watch" file
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Sun, 16 Sep 2018 08:46:15 +1000
+
+golang-github-hashicorp-go-retryablehttp (0.0~git20160810.0.f4ed9b0-2) unstable; urgency=medium
+
+  * Replace golang-go with golang-any in Build-Depends, remove golang-go from
+    Depends
+
+ -- Konstantinos Margaritis <markos@debian.org>  Tue, 08 Aug 2017 16:00:54 +0300
+
+golang-github-hashicorp-go-retryablehttp (0.0~git20160810.0.f4ed9b0-1) unstable; urgency=medium
+
+  * New upstream snapshot.
+  * Vcs-Git URL to HTTPS.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Wed, 24 Aug 2016 10:29:33 +1000
+
+golang-github-hashicorp-go-retryablehttp (0.0~git20151208.0.24fda80-1) unstable; urgency=medium
+
+  * Initial release (Closes: #820931).
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Thu, 14 Apr 2016 13:34:30 +1000

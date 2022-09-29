@@ -1,0 +1,4 @@
+Bug-Database: https://github.com/hashicorp/go-retryablehttp/issues
+Bug-Submit: https://github.com/hashicorp/go-retryablehttp/issues/new
+Repository: https://github.com/hashicorp/go-retryablehttp.git
+Repository-Browse: https://github.com/hashicorp/go-retryablehttp

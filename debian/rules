@@ -1,0 +1,51 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@ --buildsystem=golang --with=golang
+
+# some tests fail under certain constraints
+# succeeds with pbuilder but fails with sbuild
+#
+# === RUN   TestRoundTripper_TransportFailureErrorHandling
+# 2021/09/26 01:02:07 [DEBUG] GET http://this-url-does-not-exist-ed2fb.com/
+# 2021/09/26 01:02:07 [ERR] GET http://this-url-does-not-exist-ed2fb.com/ \
+# request failed: Get "http://this-url-does-not-exist-ed2fb.com/": dial tcp: \
+#   lookup this-url-does-not-exist-ed2fb.com on [::1]:53: \
+#   read udp [::1]:43932->[::1]:53: read: connection refused
+# 2021/09/26 01:02:07 [DEBUG] GET http://this-url-does-not-exist-ed2fb.com/: \
+#   retrying in 1s (4 left)
+# 2021/09/26 01:02:08 [ERR] GET http://this-url-does-not-exist-ed2fb.com/ \
+#   request failed: Get "http://this-url-does-not-exist-ed2fb.com/": dial tcp: \
+#   lookup this-url-does-not-exist-ed2fb.com on [::1]:53: \
+#   read udp [::1]:56573->[::1]:53: read: connection refused
+# 2021/09/26 01:02:08 [DEBUG] GET http://this-url-does-not-exist-ed2fb.com/: \
+#   retrying in 2s (3 left)
+# 2021/09/26 01:02:10 [ERR] GET http://this-url-does-not-exist-ed2fb.com/ \
+#   request failed: Get "http://this-url-does-not-exist-ed2fb.com/": dial tcp: \
+#   lookup this-url-does-not-exist-ed2fb.com on [::1]:53: \
+#   read udp [::1]:54192->[::1]:53: read: connection refused
+# 2021/09/26 01:02:10 [DEBUG] GET http://this-url-does-not-exist-ed2fb.com/: \
+#   retrying in 4s (2 left)
+# 2021/09/26 01:02:14 [ERR] GET http://this-url-does-not-exist-ed2fb.com/ \
+#   request failed: Get "http://this-url-does-not-exist-ed2fb.com/": \
+#   dial tcp: lookup this-url-does-not-exist-ed2fb.com on [::1]:53: \
+#   read udp [::1]:45958->[::1]:53: read: connection refused
+# 2021/09/26 01:02:14 [DEBUG] GET http://this-url-does-not-exist-ed2fb.com/: \
+#   retrying in 8s (1 left)
+# 2021/09/26 01:02:22 [ERR] GET http://this-url-does-not-exist-ed2fb.com/ \
+#   request failed: Get "http://this-url-does-not-exist-ed2fb.com/": \
+#   dial tcp: lookup this-url-does-not-exist-ed2fb.com on [::1]:53: \
+#   read udp [::1]:59126->[::1]:53: read: connection refused
+# roundtripper_test.go:128: expected \
+#   "Get \"http://this-url-does-not-exist-ed2fb.com/\": dial tcp: \
+#   lookup this-url-does-not-exist-ed2fb.com: no such host", \
+#   got "Get \"http://this-url-does-not-exist-ed2fb.com/\": \
+#   dial tcp: lookup this-url-does-not-exist-ed2fb.com: \
+#   read udp [::1]:59126->[::1]:53: read: connection refused"
+# --- FAIL: TestRoundTripper_TransportFailureErrorHandling (15.01s)
+# FAIL
+# FAIL    github.com/hashicorp/go-retryablehttp   22.287s
+# FAIL
+
+override_dh_auto_test:
+	-dh_auto_test
